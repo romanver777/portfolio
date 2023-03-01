@@ -1,0 +1,21 @@
+.messageBox{
+    position: absolute;
+    display: block;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 35px;
+    background-color: rgba(98, 143, 84, 0.8);
+    border-radius: 7px;
+    z-index: 1;
+    transition: 0.75s cubic-bezier(0.68, 0.04, 0.14, 0.96);
+}
+.messageBox_visible{
+    top: 30px;
+}
+.messageBox__text{
+    font-family: "RobotoRegular", sans-serif;
+    font-size: 1em;
+    color: #fff;
+    white-space: nowrap;
+}

@@ -1,0 +1,63 @@
+@font-face {
+    font-family: 'RobotoMedium';
+    src: url('../css/fonts/roboto/RobotoMedium.woff2') format('woff2'),
+         url('../css/fonts/roboto/robotoMedium.woff') format('woff'),
+         url('../css/fonts/roboto/robotoMedium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'RobotoRegular';
+    src: url('../css/fonts/roboto/RobotoRegular.woff2') format('woff2'),
+         url('../css/fonts/roboto/RobotoRegular.woff') format('woff'),
+         url('../css/fonts/roboto/RobotoRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'RobotoLight';
+    src: url('../css/fonts/roboto/Robotolight.woff2') format('woff2'),
+         url('../css/fonts/roboto/Robotolight.woff') format('woff'),
+         url('../css/fonts/roboto/Robotolight.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'RobotoLightItalic';
+    src: url('../css/fonts/roboto/Robotolightitalic.woff2') format('woff2'),
+         url('../css/fonts/roboto/Robotolightitalic.woff') format('woff'),
+         url('../css/fonts/roboto/Robotolightitalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'RobotoBold';
+    src: url('../css/fonts/roboto/Robotobold.woff2') format('woff2'),
+         url('../css/fonts/roboto/Robotobold.woff') format('woff'),
+         url('../css/fonts/roboto/Robotobold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'RobotoBoldItalic';
+    src: url('../css/fonts/roboto/Robotobolditalic.woff2') format('woff2'),
+         url('../css/fonts/roboto/Robotobolditalic.woff') format('woff'),
+         url('../css/fonts/roboto/Robotobolditalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'SansusWebissimo';
+    src: url('../css/fonts/sansus/sansuswebissimo.woff2') format('woff2'),
+         url('../css/fonts/sansus/sansuswebissimo.woff') format('woff'),
+         url('../css/fonts/sansus/sansuswebissimo.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}

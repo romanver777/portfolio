@@ -1,0 +1,14 @@
+extends ../template-index
+
+include ../common/mixins
+
+block title
+    title Portfolio - Welcome
+block content
+    include ../common/preloader.pug
+    include ../common/canvas.pug
+    include ../common/message-box.pug
+    include ../common/welcome-box
+block scripts
+    script(defer src="./assets/js/main.js")
+    

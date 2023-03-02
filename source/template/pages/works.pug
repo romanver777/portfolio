@@ -1,0 +1,21 @@
+extends ../template
+
+include ../common/mixins
+
+block title
+    title Portfolio - My Works
+block map
+
+    -var  pageId = 1;
+
+block content
+    include ../common/preloader
+    .main
+        include ../common/menu-pop
+        include ../common/common-header
+        include ../common/works-slide
+        .wrap.wrap-comments
+            include ../common/works-about
+            include ../common/works-contact
+            include ../common/footer
+block scripts

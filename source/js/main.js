@@ -119,8 +119,19 @@
     }, time);
   }
 
+  function openAuthPage(){
+    const authWrap = document.querySelector('.auth-wrap');
+    const front = document.querySelector('.front');
+    const back = document.querySelector('.back');
+
+    front.classList.add('front_flipped');
+    back.classList.add('back_flipped');
+    authWrap.classList.add('auth-wrap_display-none');
+  }
+
   function showPage() {
     setTimeout(() => {
+      if(location.toString().includes('auth')) openAuthPage();
       containerIndex.classList.add('container-index_visible');
       preLoader.classList.add('preloader_hided');
     }, 1000);

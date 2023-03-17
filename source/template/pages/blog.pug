@@ -1,0 +1,17 @@
+extends ../template
+
+include ../common/mixins
+
+block title
+    title Portfolio - Blog
+
+    -var pageId = 3;
+
+block content
+    .main
+        include ../common/menu-pop
+        include ../common/blog-header
+        include ../common/blog-articles
+        include ../common/footer
+block scripts
+    script(src="./assets/js/blog.js")

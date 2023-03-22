@@ -286,6 +286,7 @@ body{
   text-decoration: none;
   font-family: $f-robotoregular;
   font-size: 1em;
+  cursor: pointer;
 
   @media( pointer: fine) {
     &:hover {

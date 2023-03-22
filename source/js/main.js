@@ -130,8 +130,8 @@
   }
 
   function showPage() {
+    if(location.toString().includes('auth')) openAuthPage();
     setTimeout(() => {
-      if(location.toString().includes('auth')) openAuthPage();
       containerIndex.classList.add('container-index_visible');
       preLoader.classList.add('preloader_hided');
     }, 1000);

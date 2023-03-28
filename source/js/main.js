@@ -1,7 +1,6 @@
 'use strict';
 // preloader
 (function () {
-  const body = document.querySelector('body');
   const preLoader = document.querySelector('.preloader');
   const preLoaderBg = document.querySelector('.preloader-bg');
   const containerIndex = document.querySelector('.container-index');
@@ -46,7 +45,7 @@
         let bgStyle = window.getComputedStyle(bg).backgroundImage;
         let index = bgStyle.indexOf(firstItem) + firstItem.length;
 
-        setMobileFullHeight(body);
+        // setMobileFullHeight(body);
 
         let image = new Image();
         image.src = bgStyle.slice(index, -lastItem.length);
@@ -66,11 +65,6 @@
         navigator.userAgent
       ) || 'ontouchstart' in document.documentElement
     );
-  }
-
-  function setMobileFullHeight(elem) {
-    elem.style.height = window.innerHeight + 'px';
-    elem.style.position = 'fixed';
   }
 
   function loadScript(script) {
@@ -173,7 +167,7 @@
     e.preventDefault();
 
     Promise.all([
-      validateEmail(formName.value),
+      validateLogin(formName.value),
       validatePass(formPass.value),
       validateCheckbox(checkbox),
       validateRadio(radio),
@@ -210,14 +204,15 @@
       });
   });
 
-  function validateEmail(mail) {
-    const reg = /^\S+@\S+\.\S+$/;
-    let mailTrim = mail.trim();
+  function validateLogin(name){
+    const min = 2;
+    const reg = /^[a-zA-Z0-9]+$/;
+    const filtered = name.trim();
 
     return new Promise((res, rej) => {
-      return reg.test(mailTrim)
-        ? res(mailTrim)
-        : rej('Введите правильный адрес почты');
+      return reg.test(filtered) && filtered.length > min 
+        ? res(filtered)
+        : rej(`Введите логин длиной от ${min+1} символов`);
     });
   }
 
@@ -228,7 +223,7 @@
     return new Promise((res, rej) => {
       return passTrim.length > limits[0] && passTrim.length <= limits[1]
         ? res(passTrim)
-        : rej('Введите пароль длиной от 4 до 15 символов');
+        : rej(`Введите пароль длиной от ${limits[0]+1} до ${limits[1]} символов`);
     });
   }
 

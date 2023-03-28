@@ -20,6 +20,12 @@
     img.bg-portfolio(src='./assets/img/icons/portfolio_header.svg' alt="Portfolio")
     .bg-arrow-down
         .bg-arrow-down__left
-            +svg-tri-left(class="bg-arrow-down__tri_works")
+            if pageId === 1
+                +svg-tri-left(class="bg-arrow-down__tri_works")
+            if pageId === 2
+                +svg-tri-left(class="bg-arrow-down__tri_about-left")
         .bg-arrow-down__right
-            +svg-tri-right(class="bg-arrow-down__tri_works")
+            if pageId === 1
+                +svg-tri-right(class="bg-arrow-down__tri_works")
+            if pageId === 2
+                +svg-tri-right(class="bg-arrow-down__tri_about-right")

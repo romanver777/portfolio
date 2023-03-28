@@ -24,6 +24,11 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  transition: 0.75s;
+
+  @media(max-width: 768px){
+    height: calc(var(--vh, 1vh) * 100);
+  }
 }
 .well__header {
   color: #fff;

@@ -32,6 +32,28 @@
     window.scroll({ top: window.innerHeight, behavior: 'smooth' });
   });
 })();
+//set first block height 100vh for mobile
+(function () {
+  function isMobile() {
+    return (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      ) || 'ontouchstart' in document.documentElement
+    );
+  }
+  function setElemHeight(elem) {
+    let vh = window.innerHeight * 0.01;
+    document.querySelector(elem).style.setProperty('--vh', `${vh}px`);
+  }
+  
+  if (isMobile) {
+    setElemHeight('.wrap__header');
+
+    window.addEventListener('resize', () => {
+      setElemHeight('.wrap__header');
+    });
+  }
+})();
 //slider size
 (function () {
   const sliderList = document.querySelector('.pict__list');
@@ -95,48 +117,48 @@
     }
 
     switch (direction) {
-    case 'forward':
-      {
-        if (position == 'top') sliderList.style.top = -size + 'px';
-        if (position == 'left') sliderList.style.left = -size + 'px';
+      case 'forward':
+        {
+          if (position == 'top') sliderList.style.top = -size + 'px';
+          if (position == 'left') sliderList.style.left = -size + 'px';
 
-        setTimeout(() => {
+          setTimeout(() => {
+            sliderList.style.transition = 'none';
+
+            let lastChild = sliderList.firstElementChild;
+            let result = sliderList.removeChild(lastChild);
+            sliderList.append(result);
+
+            if (position == 'top') sliderList.style.top = 0 + 'px';
+            if (position == 'left') sliderList.style.left = 0 + 'px';
+
+            setTimeout(() => {
+              sliderList.style.transition = '0.5s';
+              timeout = false;
+            }, 100);
+          }, 500);
+        }
+        break;
+      case 'backward':
+        {
           sliderList.style.transition = 'none';
 
-          let lastChild = sliderList.firstElementChild;
+          let lastChild = sliderList.lastElementChild;
           let result = sliderList.removeChild(lastChild);
-          sliderList.append(result);
+          sliderList.prepend(result);
 
-          if (position == 'top') sliderList.style.top = 0 + 'px';
-          if (position == 'left') sliderList.style.left = 0 + 'px';
+          if (position == 'top') sliderList.style.top = -size + 'px';
+          if (position == 'left') sliderList.style.left = -size + 'px';
 
           setTimeout(() => {
             sliderList.style.transition = '0.5s';
-            timeout = false;
+
+            if (position == 'top') sliderList.style.top = 0 + 'px';
+            if (position == 'left') sliderList.style.left = 0 + 'px';
+            setTimeout(() => (timeout = false), 500);
           }, 100);
-        }, 500);
-      }
-      break;
-    case 'backward':
-      {
-        sliderList.style.transition = 'none';
-
-        let lastChild = sliderList.lastElementChild;
-        let result = sliderList.removeChild(lastChild);
-        sliderList.prepend(result);
-
-        if (position == 'top') sliderList.style.top = -size + 'px';
-        if (position == 'left') sliderList.style.left = -size + 'px';
-
-        setTimeout(() => {
-          sliderList.style.transition = '0.5s';
-
-          if (position == 'top') sliderList.style.top = 0 + 'px';
-          if (position == 'left') sliderList.style.left = 0 + 'px';
-          setTimeout(() => (timeout = false), 500);
-        }, 100);
-      }
-      break;
+        }
+        break;
     }
   }
 
@@ -150,24 +172,24 @@
     cards[activeCard].classList.remove('p-card_active');
 
     switch (direction) {
-    case 'forward':
-      {
-        if (activeCard == cards.length - 1) {
-          activeCard = 0;
-        } else {
-          activeCard++;
+      case 'forward':
+        {
+          if (activeCard == cards.length - 1) {
+            activeCard = 0;
+          } else {
+            activeCard++;
+          }
         }
-      }
-      break;
-    case 'backward':
-      {
-        if (activeCard == 0) {
-          activeCard = cards.length - 1;
-        } else {
-          activeCard--;
+        break;
+      case 'backward':
+        {
+          if (activeCard == 0) {
+            activeCard = cards.length - 1;
+          } else {
+            activeCard--;
+          }
         }
-      }
-      break;
+        break;
     }
     setTimeout(() => {
       cards[activeCard].classList.add('p-card_active');
@@ -176,22 +198,22 @@
 
   function startSliderByClicking(button) {
     switch (button) {
-    case 'up':
-      {
-        slideMoves('forward', upWr, 'top');
-        slideMoves('backward', downWr, 'top');
-        slideMoves('forward', pictWr, 'left');
-        titleSlideMoves('forward', cardItems);
-      }
-      break;
-    case 'down':
-      {
-        slideMoves('backward', upWr, 'top');
-        slideMoves('forward', downWr, 'top');
-        slideMoves('backward', pictWr, 'left');
-        titleSlideMoves('backward', cardItems);
-      }
-      break;
+      case 'up':
+        {
+          slideMoves('forward', upWr, 'top');
+          slideMoves('backward', downWr, 'top');
+          slideMoves('forward', pictWr, 'left');
+          titleSlideMoves('forward', cardItems);
+        }
+        break;
+      case 'down':
+        {
+          slideMoves('backward', upWr, 'top');
+          slideMoves('forward', downWr, 'top');
+          slideMoves('backward', pictWr, 'left');
+          titleSlideMoves('backward', cardItems);
+        }
+        break;
     }
   }
 })();
@@ -215,7 +237,6 @@
     if (messageTimer) {
       clearTimeout(messageTimer);
       messageBox.classList.remove('messageBox_visible');
-      console.log(messageTimer);
     }
     if (
       formName.value.trim() &&

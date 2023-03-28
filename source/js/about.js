@@ -26,6 +26,28 @@
     window.scroll({ top: window.innerHeight, behavior: 'smooth' });
   });
 })();
+//set first block height 100vh for mobile
+(function () {
+  function isMobile() {
+    return (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      ) || 'ontouchstart' in document.documentElement
+    );
+  }
+  function setElemHeight(elem) {
+    let vh = window.innerHeight * 0.01;
+    document.querySelector(elem).style.setProperty('--vh', `${vh}px`);
+  }
+  
+  if (isMobile) {
+    setElemHeight('.wrap__header');
+
+    window.addEventListener('resize', () => {
+      setElemHeight('.wrap__header');
+    });
+  }
+})();
 //skills animation
 (function () {
   const maxPersents = 100;

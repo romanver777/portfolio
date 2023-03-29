@@ -40,7 +40,7 @@
     document.querySelector(elem).style.setProperty('--vh', `${vh}px`);
   }
   
-  if (isMobile) {
+  if (isMobile()) {
     setElemHeight('.wrap__header');
 
     window.addEventListener('resize', () => {

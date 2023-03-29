@@ -125,6 +125,17 @@
     border-radius: 50%;
     background-color: $green-shine;
     cursor: pointer;
+
+    &:after{
+      width: 80px;
+      height: 80px;
+      position: absolute;
+      content: '';
+      top: 50%;
+      left: 70%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+    }
   }
 }
 .blog__nav{
@@ -231,7 +242,8 @@
   }
 }
 .article{
-  margin-bottom: 72px;
+  padding-top: 30px;
+  margin-bottom: 42px;
   border-bottom: 5px solid $l-gray;
   &:last-child{
     margin-bottom: 0;
@@ -239,7 +251,7 @@
   }
 
   @media (max-width: 1110px){
-    margin-bottom: 50px;
+    margin-bottom: 20px;
   }
   @media (max-width: 767px){
     margin-bottom: 29px;
